@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+
   end
 
   # GET /orders/1
@@ -15,6 +16,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.order_items.build
   end
 
   # GET /orders/1/edit
@@ -69,6 +71,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :description, :price, :category_id, {tag_ids: []})
+      params.require(:order).permit(:number, :customer_id, :order_date, order_items_attributes: [:id, :product_id, :order_id, :qty, :_destroy])
     end
 end

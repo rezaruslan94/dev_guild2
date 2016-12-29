@@ -1,0 +1,6 @@
+<fieldset>
+  <%= f.collection_select(:product_id, Product.all, :id, :name) %>
+  <%= f.number_field :qty %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to '[remove]', '#', class: 'remove_order_items' %>
+</fieldset>
