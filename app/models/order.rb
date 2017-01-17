@@ -10,7 +10,6 @@ class Order < ApplicationRecord
     self.order_items.each do |order_item|
       sum = sum + (order_item.qty * order_item.product.price)
     end
-    self.update(total_price: sum)
+    sum
   end
-
 end
